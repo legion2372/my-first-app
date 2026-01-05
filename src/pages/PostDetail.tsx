@@ -1,11 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
-import { blogPosts, Post } from '../data/posts';
+import { blogPosts, type Post } from '../data/posts'; // 注意这里的 type 关键字
 
 const PostDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   
-  // 查找文章，注意这里我们将 id 转为数字进行匹配
-  const post = blogPosts.find(p => p.id === Number(id)) as Post | undefined;
+  // 核心修复：确保比较的两边都是数字
+  const post = (blogPosts as Post[]).find(p => p.id === Number(id));
 
   if (!post) {
     return (
@@ -34,7 +34,7 @@ const PostDetail = () => {
         </h1>
       </header>
 
-      {/* 只有当 post 里面有 image 字段时才显示图片 */}
+      {/* 图片显示逻辑 */}
       {post.image && (
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
