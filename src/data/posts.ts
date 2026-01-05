@@ -81,5 +81,16 @@ const blogName = "Raymond.Plog";
 console.log(\`欢迎来到 \${blogName}\`);
 \`\`\`
 `
+  },
+   {
+    id: '5',
+    title: '关于search 框和git hub的基础使用',
+    date: '2026-01-06',
+    excerpt: '记录学习搭建自己博客的思考，如何使用git来push上传来高效完成代码上线。',
+    category: '学习',
+    content: `
+### git思考
+。
+`
   }
 ];
